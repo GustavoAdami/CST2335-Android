@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Laboratorio de Android</string>
-    <string name="hello_message">Ola Mundo!</string>
-    <string name="ButtonText">Eu sou um botao</string>
+    <string name="hello_message">Aqui estao meus widgets:</string>
+    <string name="ButtonText">Botao</string>
+    <string name="checkThis">Olha isso!</string>
+    <string name="switchOnOff">Liga / Desliga!</string>
+    <string name="nameHint">Digite sua resposta aqui</string>
+
 </resources>
