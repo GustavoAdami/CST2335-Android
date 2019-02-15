@@ -7,4 +7,14 @@
     <string name="switchOnOff">Liga / Desliga!</string>
     <string name="nameHint">Digite sua resposta aqui</string>
 
+    <string name="loginButton">Login</string>
+    <string name="emailLabel">Digite seu email:</string>
+    <string name="email">Email aqui</string>
+    <string name="passwordLabel">Digite sua senha:</string>
+    <string name="yourProfile">Seu perfil</string>
+    <string name="nameLabel">Seu nome:</string>
+    <string name="name">Digite seu nome</string>
+    <string name="emailLabel2">Seu email:</string>
+    <string name="yourPicture">Tirar sua foto:</string>
+    <string name="picInstruction">Clique no botao acima para tirar uma foto</string>
 </resources>
