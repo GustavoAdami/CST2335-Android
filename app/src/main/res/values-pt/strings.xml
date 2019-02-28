@@ -17,4 +17,6 @@
     <string name="emailLabel2">Seu email:</string>
     <string name="yourPicture">Tirar sua foto:</string>
     <string name="picInstruction">Clique no botao acima para tirar uma foto</string>
+    <string name="chat">Va para o bate papo</string>
+
 </resources>

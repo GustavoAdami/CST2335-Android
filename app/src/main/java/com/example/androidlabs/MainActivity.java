@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lab3_linear);
+        Button login = (Button)findViewById(R.id.loginButton);
 
         sp = getSharedPreferences("EmailsFile", Context.MODE_PRIVATE);
         email = (EditText)findViewById(R.id.email);
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         email.setText(savedEmail);
 
-        Button login = (Button)findViewById(R.id.loginButton);
+        //Button login = (Button)findViewById(R.id.loginButton);
         login.setOnClickListener( b -> {
             //Give directions to go from this page, to SecondActivity
             Intent nextPage = new Intent(MainActivity.this, ProfileActivity.class);

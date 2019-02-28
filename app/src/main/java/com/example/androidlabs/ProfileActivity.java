@@ -7,6 +7,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -38,6 +39,17 @@ public class ProfileActivity extends AppCompatActivity {
 //                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
 //            }
 //        });
+
+        Button goToChat = findViewById(R.id.goToChat);
+        goToChat.setOnClickListener(c -> {
+            // Go to chat page
+            //Give directions to go from this page, to SecondActivity
+            Intent nextPage = new Intent(ProfileActivity.this, ChatRoomActivity.class);
+
+            //Now make the transition:
+            startActivityForResult(nextPage, 345);
+
+        });
 
         Log.e(ACTIVITY_NAME, "In function: " + "onCreate");
     }
