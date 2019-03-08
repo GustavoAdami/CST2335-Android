@@ -1,8 +1,12 @@
 package com.example.androidlabs;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatRoomActivity extends AppCompatActivity {
+    String results = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,23 +32,66 @@ public class ChatRoomActivity extends AppCompatActivity {
         Button receive = findViewById(R.id.btnReceive);
         List<Message> messageList = new ArrayList<>();
 
-                //String[] s = {"1", "2", "3"};
+        //get a database:
+        MyDatabaseOpenHelper dbOpener = new MyDatabaseOpenHelper(this);
+        SQLiteDatabase db = dbOpener.getWritableDatabase();
+
+        //query all the results from the database:
+        String [] columns = {MyDatabaseOpenHelper.COL_ID, MyDatabaseOpenHelper.COL_SENT, MyDatabaseOpenHelper.COL_RECEIVED};
+        Cursor results = db.query(false, MyDatabaseOpenHelper.TABLE_NAME, columns, null, null, null, null, null, null);
+
+        //find the column indices:
+        int sentColumnIndex = results.getColumnIndex(MyDatabaseOpenHelper.COL_SENT);
+        int receivedColIndex = results.getColumnIndex(MyDatabaseOpenHelper.COL_RECEIVED);
+        int idColIndex = results.getColumnIndex(MyDatabaseOpenHelper.COL_ID);
+
+        //iterate over the results, return true if there is a next item:
+        while(results.moveToNext())
+        {
+            String msg = results.getString(sentColumnIndex);
+            boolean received = results.getInt(receivedColIndex) != 0;
+            long id = results.getLong(idColIndex);
+
+            //add the new Contact to the array list:
+            messageList.add(new Message(msg, received, id));
+        }
+
         ListAdapter aListAdapter = new ListAdapter(messageList, getApplicationContext());
         msgList.setAdapter(aListAdapter);
 
         send.setOnClickListener(c -> {
-            Message msg = new Message(message.getText().toString(), true);
+            //add to the database and get the new ID
+            ContentValues newRowValues = new ContentValues();
+            //put string name in the NAME column:
+            newRowValues.put(MyDatabaseOpenHelper.COL_SENT, message.getText().toString());
+            //put string email in the EMAIL column:
+            newRowValues.put(MyDatabaseOpenHelper.COL_RECEIVED, true);
+            //insert in the database:
+            long newId = db.insert(MyDatabaseOpenHelper.TABLE_NAME, null, newRowValues);
+
+            Message msg = new Message(message.getText().toString(), true, newId);
             messageList.add(msg);
             message.setText("");
             aListAdapter.notifyDataSetChanged();
         });
 
         receive.setOnClickListener(c -> {
-            Message msg = new Message(message.getText().toString(), false);
+            //add to the database and get the new ID
+            ContentValues newRowValues = new ContentValues();
+            //put string name in the NAME column:
+            newRowValues.put(MyDatabaseOpenHelper.COL_SENT, message.getText().toString());
+            //put string email in the EMAIL column:
+            newRowValues.put(MyDatabaseOpenHelper.COL_RECEIVED, false);
+            //insert in the database:
+            long newId = db.insert(MyDatabaseOpenHelper.TABLE_NAME, null, newRowValues);
+
+            Message msg = new Message(message.getText().toString(), false, newId);
             messageList.add(msg);
             message.setText("");
             aListAdapter.notifyDataSetChanged();
         });
+
+        printCursor(results);
     }
 
     private class ListAdapter extends BaseAdapter {
@@ -85,6 +133,23 @@ public class ChatRoomActivity extends AppCompatActivity {
             messageText.setText(msg.get(position).getMessage());
             return newView;
         }
+    }
+
+    public void printCursor( Cursor c){
+        Log.d("Printing cursor", "DB version: " + MyDatabaseOpenHelper.VERSION_NUM + " Number of columns: " + c.getColumnCount());
+
+        for(int i = 0; i < c.getColumnCount(); i++){
+            Log.d("Name of columns: ", c.getColumnName(i));
+        }
+
+        Log.d("Number of results: ", + c.getCount() + "");
+
+        c.moveToFirst();
+        do{
+            Log.d("Results: ", c.getString(c.getColumnIndex(MyDatabaseOpenHelper.COL_ID))
+                            + " " + c.getString(c.getColumnIndex(MyDatabaseOpenHelper.COL_SENT))
+                            + c.getInt(c.getColumnIndex(MyDatabaseOpenHelper.COL_RECEIVED)));
+        } while (c.moveToNext());
     }
 }
 

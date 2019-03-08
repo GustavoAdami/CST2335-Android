@@ -4,10 +4,17 @@ public class Message {
 
     private String message;
     private boolean isSend;
+    private long id;
 
     public Message(String message, boolean isSend) {
         this.message = message;
         this.isSend = isSend;
+    }
+
+    public Message(String message, boolean isSend, long id) {
+        this.message = message;
+        this.isSend = isSend;
+        this.id = id;
     }
 
     public Message() {

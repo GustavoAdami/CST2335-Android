@@ -13,7 +13,7 @@
         android:text="@string/hello_message"
         android:textSize="30sp"
         android:layout_columnWeight="1"
-        android:layout_gravity="fill_horizontal"/>
+        android:layout_gravity=""/>
 
     <Button
         android:id="@+id/button"
