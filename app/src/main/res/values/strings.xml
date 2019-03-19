@@ -17,4 +17,9 @@
     <string name="yourPicture">Your picture:</string>
     <string name="picInstruction">Click the button above to take a picture</string>
     <string name="chat">Go to chat</string>
+    <string name="goToolbar">Go to Toolbar page</string>
+    <string name="menuBtn" />
+    <string name="menuBtn2" />
+    <string name="menuBtn3" />
+    <string name="myoverflow">My overflow</string>
 </resources>

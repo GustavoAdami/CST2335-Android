@@ -51,6 +51,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         });
 
+        Button goToToolbar = findViewById(R.id.goToToolbar);
+        goToToolbar.setOnClickListener(c -> {
+            Intent toolbarPage = new Intent(ProfileActivity.this, TestToolbar.class);
+
+            startActivity(toolbarPage);
+        });
+
         Log.e(ACTIVITY_NAME, "In function: " + "onCreate");
     }
 

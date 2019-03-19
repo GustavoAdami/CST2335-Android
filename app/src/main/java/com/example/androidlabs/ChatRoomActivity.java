@@ -45,7 +45,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         int receivedColIndex = results.getColumnIndex(MyDatabaseOpenHelper.COL_RECEIVED);
         int idColIndex = results.getColumnIndex(MyDatabaseOpenHelper.COL_ID);
 
-        //iterate over the results, return true if there is a next item:
+        //iterate over the results, returnbtn true if there is a next item:
         while(results.moveToNext())
         {
             String msg = results.getString(sentColumnIndex);

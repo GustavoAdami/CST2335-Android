@@ -17,6 +17,11 @@
     <string name="emailLabel2">Seu email:</string>
     <string name="yourPicture">Tirar sua foto:</string>
     <string name="picInstruction">Clique no botao acima para tirar uma foto</string>
-    <string name="chat">Va para o bate papo</string>
+    <string name="chat">Ir para o bate papo</string>
+    <string name="goToolbar">Ir para a pagina da toolbar</string>
+    <string name="menuBtn" />
+    <string name="menuBtn2" />
+    <string name="menuBtn3" />
+    <string name="myoverflow">Minha sobrecarga</string>
 
 </resources>
