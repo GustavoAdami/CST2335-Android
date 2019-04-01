@@ -23,5 +23,8 @@
     <string name="menuBtn2" />
     <string name="menuBtn3" />
     <string name="myoverflow">Minha sobrecarga</string>
+    <string name="min">Min:</string>
+    <string name="current">Atual: </string>
+    <string name="max">Max: </string>
 
 </resources>

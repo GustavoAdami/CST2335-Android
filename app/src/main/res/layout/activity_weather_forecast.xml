@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WeatherForecast">
+
+    <ImageView
+        android:id="@+id/currentWeather"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/avatar"/>
+
+    <TextView
+        android:id="@+id/city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="City Weather"
+        android:layout_below="@+id/currentWeather"/>
+
+    <GridLayout
+        android:id="@+id/temperatureGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/city"
+        android:columnCount="3"
+        android:rowCount="1">
+
+        <TextView
+            android:id="@+id/minTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/min"
+
+            android:layout_columnWeight="1"/>
+
+        <TextView
+            android:id="@+id/currentTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/current"
+            android:layout_columnWeight="1"/>
+
+        <TextView
+            android:id="@+id/maxTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/max"
+            android:layout_columnWeight="1"/>
+
+    </GridLayout>
+
+
+    <TextView
+        android:id="@+id/uvRating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="UV Rating: "
+        android:layout_below="@+id/temperatureGrid"/>
+
+    <TextView
+        android:id="@+id/windSpeed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wind speed: "
+        android:layout_below="@+id/uvRating"/>
+
+    <ProgressBar
+        android:id="@+id/weatherProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_below="@+id/windSpeed"/>
+
+</RelativeLayout>

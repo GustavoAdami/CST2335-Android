@@ -22,4 +22,7 @@
     <string name="menuBtn2" />
     <string name="menuBtn3" />
     <string name="myoverflow">My overflow</string>
+    <string name="min">Min: </string>
+    <string name="current">Current: </string>
+    <string name="max">Max: </string>
 </resources>

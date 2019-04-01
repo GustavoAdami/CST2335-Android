@@ -58,6 +58,13 @@ public class ProfileActivity extends AppCompatActivity {
             startActivity(toolbarPage);
         });
 
+        Button goToWeatherForecast = findViewById(R.id.goToWeatherForecast);
+        goToWeatherForecast.setOnClickListener(c -> {
+            Intent weatherForecastPage = new Intent(ProfileActivity.this, WeatherForecast.class);
+
+            startActivity(weatherForecastPage);
+        });
+
         Log.e(ACTIVITY_NAME, "In function: " + "onCreate");
     }
 
